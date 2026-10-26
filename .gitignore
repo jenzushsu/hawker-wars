@@ -1,0 +1,18 @@
+node_modules/
+coverage/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+
+# Generated private archives and evaluator artifacts
+results/
+
+.next/
+*.tsbuildinfo
+playwright-report/
+test-results/
+
+# Local Supabase CLI metadata
+supabase/.temp/
