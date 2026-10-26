@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Accessible slide-by-slide transcript of the Hawker Wars LinkedIn carousel, with methodology, model results, and limitations.">
+  <title>Hawker Wars carousel transcript</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #272d29; background: #f4ecd9; }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.65; font-size: 1.08rem; }
+    a { color: #175276; text-decoration-thickness: .11em; text-underline-offset: .18em; }
+    a:focus-visible { outline: 3px solid #9a352a; outline-offset: 4px; }
+    .skip { position: absolute; left: -100vw; top: 1rem; padding: .6rem 1rem; background: white; }
+    .skip:focus { left: 1rem; }
+    header { background: #10221e; color: #f4ecd9; padding: 2.5rem max(1.25rem, calc((100vw - 48rem)/2)); }
+    header a { color: #d3f39b; }
+    h1 { font-size: clamp(2.25rem, 6vw, 4rem); line-height: 1.1; margin: .5rem 0 1rem; }
+    header p { max-width: 44rem; }
+    main, footer { max-width: 48rem; margin: auto; padding: 1.5rem 1.25rem 4rem; }
+    section { border-top: 2px solid #ad9d85; padding: 2rem 0 1rem; }
+    h2 { font-size: clamp(1.65rem, 4vw, 2.2rem); line-height: 1.2; margin: 0 0 .65rem; }
+    h3 { font-size: 1.25rem; margin-bottom: .2rem; }
+    p, ul { margin-top: .5rem; }
+    .label { font-weight: 700; color: #8b392c; letter-spacing: .04em; text-transform: uppercase; font-size: .9rem; }
+    .scroll { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; min-width: 38rem; font-variant-numeric: tabular-nums; }
+    th, td { text-align: left; padding: .75rem .6rem; border-bottom: 1px solid #ad9d85; }
+    th:not(:first-child), td:not(:first-child) { text-align: right; }
+    caption { text-align: left; font-weight: 700; margin-bottom: .5rem; }
+    footer { border-top: 2px solid #ad9d85; padding-top: 1.5rem; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to transcript</a>
+  <header>
+    <p><a href="./">← Full Hawker Wars article</a></p>
+    <h1>Hawker Wars carousel transcript</h1>
+    <p>The complete text and chart descriptions for the eight-slide LinkedIn document. <a href="./hawker-wars-linkedin-carousel.pdf">Download the selectable-text PDF</a>.</p>
+  </header>
+  <main id="content">
+    <p>The carousel compares three decision models in the clean Hawker Wars scenario. Each model operated a separate stall for 120 simulated decision ticks plus closing. The retained prompt was <code>action-criteria-prompt-1</code>. Demand seeds 31, 47 and 59 were each repeated twice: six shifts per model, 18 model trajectories. Configured model IDs were Jev <code>jev-1.13.0</code>, Zoom Decisions <code>zoom-decisions-standard</code>, and Zoom Decisions Pro <code>zoom-decisions-pro</code>. The Zoom IDs identify configured API services, not immutable backend weight snapshots. Game dollars do not include API charges.</p>
+
+    <section aria-labelledby="slide-1">
+      <p class="label">Slide 1 of 8</p>
+      <h2 id="slide-1">Could a fast model run a food stall?</h2>
+      <p>One shift contains 120 sequential decisions. Three models each ran six shifts. Profit, service, cooked-food waste and customer waiting can pull outcomes in different directions.</p>
+      <p>The artwork shows the project's three illustrated chicken-rice stalls in a tiled hawker centre. It is illustrative game art, not a screenshot of one of the six reported shifts.</p>
+    </section>
+
+    <section aria-labelledby="slide-2">
+      <p class="label">Slide 2 of 8</p>
+      <h2 id="slide-2">Every action changes the next decision</h2>
+      <p>The controller observes the queue, stock, clock, public mechanics and legal actions; chooses serve, cook, restock, promote or wait; then the simulator advances deliveries, spoilage and customer behavior. All three models received the same retained action-criteria prompt. Three seeds times two repeats times three models produced 18 trajectories.</p>
+    </section>
+
+    <section aria-labelledby="slide-3">
+      <p class="label">Slide 3 of 8</p>
+      <h2 id="slide-3">Profit and final utility favored Zoom Decisions Pro</h2>
+      <p>The horizontal bars start at zero and show mean simulated game profit over six shifts per model. Zoom Decisions Pro also led final utility in all six shifts; utility was the instructed objective.</p>
+      <div class="scroll"><table>
+        <caption>Closing outcomes, mean and observed range across six shifts per model</caption>
+        <thead><tr><th scope="col">Model</th><th scope="col">Mean profit</th><th scope="col">Profit range</th><th scope="col">Mean utility</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Jev 1.13.0</th><td>$251</td><td>$226–$276</td><td>19,102</td></tr>
+          <tr><th scope="row">Zoom Decisions</th><td>$289</td><td>$266–$306</td><td>24,745</td></tr>
+          <tr><th scope="row">Zoom Decisions Pro</th><td>$313</td><td>$296–$331</td><td>27,823</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section aria-labelledby="slide-4">
+      <p class="label">Slide 4 of 8</p>
+      <h2 id="slide-4">Serving the most was not the whole score</h2>
+      <p>Zoom Decisions served the most customers in every shift, while Zoom Decisions Pro had much less cooked-food waste on average. “Left” means customers who abandoned the queue. Values are means over six shifts per model.</p>
+      <div class="scroll"><table>
+        <caption>Mean customer service, cooked portions wasted and customer abandonment</caption>
+        <thead><tr><th scope="col">Model</th><th scope="col">Served</th><th scope="col">Wasted</th><th scope="col">Abandoned</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Jev 1.13.0</th><td>86.3</td><td>4.0</td><td>39.0</td></tr>
+          <tr><th scope="row">Zoom Decisions</th><td>113.3</td><td>22.0</td><td>18.3</td></tr>
+          <tr><th scope="row">Zoom Decisions Pro</th><td>108.2</td><td>5.5</td><td>18.2</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section aria-labelledby="slide-5">
+      <p class="label">Slide 5 of 8</p>
+      <h2 id="slide-5">A stockout does not mean the model chose WAIT</h2>
+      <p>A customer-facing stockout is a simulated tick with waiting customers and no ready food. Its observed duration was 46–60 ticks for Jev 1.13.0, 30–31 for Zoom Decisions, and 27–39 for Zoom Decisions Pro. The bars use a shared zero-to-65-tick scale and show each model's six-shift range. Across these six shifts, all three models made zero empty-pipeline WAIT choices when RESTOCK was legal. Deliveries or cooking can be in progress during a stockout. These simulated ticks are distinct from API inference latency.</p>
+      <p>A voluntary WAIT is a model choice when other actions were legal. A compulsory WAIT is the sole legal action and is applied locally without a model call. The two should not be pooled as evidence of model preference.</p>
+    </section>
+
+    <section aria-labelledby="slide-6">
+      <p class="label">Slide 6 of 8</p>
+      <h2 id="slide-6">What these shifts can and cannot say</h2>
+      <p>Zoom Decisions Pro led the decision models in game profit and final utility in all six new-seed shifts. Zoom Decisions served the most customers in all six. There were seven rules fallbacks across 18 model trajectories: six invalid Jev responses and one Zoom Decisions Pro timeout. A fallback replaces that tick's model action with the fixed, hand-authored Rules controller, so affected outcomes are mixed model-and-rules trajectories.</p>
+      <p>The published seed-23 shift is a separate comparison in which the Jev-versus-Zoom profit order reversed. Three new demand schedules repeated twice do not establish a population ranking or a model's general planning ability.</p>
+    </section>
+
+    <section aria-labelledby="slide-7">
+      <p class="label">Slide 7 of 8</p>
+      <h2 id="slide-7">Effective for what?</h2>
+      <p>In this simulator and prompt, Zoom Decisions Pro achieved higher final utility and game profit: mean $313 profit, 108 customers served and 5.5 portions wasted. Zoom Decisions achieved higher throughput: mean 113 served, $289 profit and 22 portions wasted. These are game outcomes, not API return on investment. Actual API fees and inference latency require separate measurement before claiming economic or real-time effectiveness.</p>
+    </section>
+
+    <section aria-labelledby="slide-8">
+      <p class="label">Slide 8 of 8</p>
+      <h2 id="slide-8">Judge the whole shift, not one move</h2>
+      <p>The full <a href="./">Hawker Wars article</a> includes the prompt, per-tick logs, stockout charts, historical prompt experiments, the earlier Mario planning-support comparison, and a <a href="./replay/hawker-wars-replay.gif">seed-23 animated replay</a>. The replay represents simulated tick time, not model response latency.</p>
+      <p><a href="https://huggingface.co/datasets/zoom-ai/contested-fast-decisions">Contested Fast Decisions</a> is a complementary static classification benchmark. Its accuracy numbers do not imply a matching ranking or correlation with these sequential simulation outcomes.</p>
+    </section>
+  </main>
+  <footer>Jenzus Hsu · In close collaboration with Codex (GPT-6 Astra)</footer>
+</body>
+</html>
